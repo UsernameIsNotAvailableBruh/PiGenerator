@@ -15,8 +15,10 @@ a4(False) #put False in cache
 Digits = int(input("How many digits of pi should be calculated?\n"))
 print("Calculating...\nThe first number is the current approx., The second number is the iteration")
 start = time.perf_counter()
-checkiter = 1000 #increase this if it gives the wrong result
-PrecAdd = 20 #alternatively, increase/decrease this value (if the output seems "stuck") 
+checkiter = 5 #increase this if it gives the wrong result
+PrecAdd = 20 #alternatively, increase/decrease this value (if the output seems "stuck")
+#increasing the values would lead to longer processing times but more precision
+#decreasing the values would lead to shorter processing times but less precision (more error prone)
 getcontext().prec = Digits+PrecAdd
 a = True
 count = 0
@@ -29,7 +31,7 @@ while len(set(CheckList)) != 1:
     a = not a
     x+=2
     count +=1
-    if count%1000==0: #increase the 1,000 if you want the screen to "update" less, decrease to make it update more. 
+    if count%10_000==0: #increase the number if you want the screen to "update" less, decrease to make it update more. 
         print(sum, count, end="\r")
 
 print("  "*len(str(sum)), end="\r")
